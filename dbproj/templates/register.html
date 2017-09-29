@@ -1,0 +1,48 @@
+{% extends "layouts/page.html" %}
+
+{% block title %}
+Steam Community Registration
+{% endblock %}
+
+{% block body %}
+<div class="mainRegisterPanel">
+	<div class="mainLoginLeftPanel">
+		<h1>Register</h1><br>
+		<p>Create a new Steam account</p>
+		<form>
+			<div class="mainRegisterLeftPanel_signup">
+				<label for="steamAccountName">Email</label><br>
+				<!--
+					fix "id" to keep them unique for each, same for "for", and other attributes (e.g. "maxlength")
+				-->
+				<input class="textField" type="email" name="email" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">UserName</label><br>
+				<input class="textField" type="text" name="username" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">Firstname</label><br>
+				<input class="textField" type="text" name="firstname" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">Lastname</label><br>
+				<input class="textField" type="text" name="lastname" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">Country</label><br>
+				<input class="textField" type="text" name="country" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<!-- fixed type attrib -->
+				<label for="steamAccountName">Phone Number</label><br>
+				<input class="textField no-spin" type="tel" size="10" name="phonenumber" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">Date of Birth (DD-MM-YYYY)</label>
+				<input class="textField" type="date" name="dob" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamAccountName">Password</label><br>
+				<input class="textField" type="password" name="password" id="steamPassword" autocomplete="off" maxlength="64" tabindex="1" value=""><br><br>
+				<label for="steamPassword">Confirm Password</label><br>
+				<input class="textField" type="password" name="password1" id="steamPassword" autocomplete="off" maxlength="64" tabindex="2"><br>
+			</div>
+			<div style="clear: both;">
+				<div id="login_btn_signin"><br>
+					<input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Sign up" width="104" height="25" border="0" tabindex="5">
+				</div>
+				<div class="forgotHelper">
+					<a href="#">Forgot your password?</a>		
+				</div>
+			</div>
+		</form>
+	</div>                     
+</div>
+{% endblock %}

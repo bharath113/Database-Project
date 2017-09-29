@@ -1,0 +1,24 @@
+{% extends "layouts/page.html" %}
+
+<!--
+    Can make it so that the "User Page" is replaced by the username
+-->
+{% block title %}
+Steam Community - User Page
+{% endblock %}
+
+{% block body %}
+<div class="profile_header_texture">
+    <div class="profile_photo">
+        <span><img src="/static/images/profile.png"></span>
+    </div>
+    <div class="profile_data">
+        <p>User_Name</p>
+        <p>Some Info about user</p>
+    </div>
+    <div class="profile_level">
+        <p style="font-size: 25px;">Level: 10</p>
+		<input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Edit Profile" width="104" height="25" border="0" tabindex="5">
+    </div>
+</div>
+{% endblock %}
