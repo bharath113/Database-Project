@@ -1,5 +1,5 @@
 # Database-Project
-Lab project
+Lab course project
 
 ## About Flask:
 * Flask is a micro web framework written in Python and based on the Werkzeug toolkit and Jinja2 template engine.
