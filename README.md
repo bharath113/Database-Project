@@ -28,7 +28,7 @@ Download Xampp and install.
 - Start the environment in the cmd (should be selected from anaconda naviagtor, you can press the play button beside the environment name)
 by typing `activate your_environment_name`.
 - Open Xampp and start the mysql server.
-- Do to the directry when app.py is then type `python app.py`.
+- Do to the directry where app.py is, then type `python app.py`.
 
 Note: If you try to run this project make sure to import the database which was uploaded.
 
