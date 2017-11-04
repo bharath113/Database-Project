@@ -1,0 +1,73 @@
+{% extends "/page.html" %}
+
+<!--
+    Can make it so that the "User Page" is replaced by the username
+-->
+{% block title %}
+ User Profile
+{% endblock %}
+
+{% block body %}
+
+<script>
+function user_id()
+    {
+        int t=profile_data[0];
+    }
+</script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/edit_profile.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+
+           <form method="post" action="profile_save_changes">
+                   
+                    <div class="prof_head">
+                     
+                     <img style="float:left; max-height: 100px;" class="img_src" src="/static/images/profile.png">
+                      <p>{{profile_data[1]}}</p>
+                    </div>
+                      
+                     <div class="user_data">
+                       <div class="user_data_style">
+                           UserId: &nbsp;&nbsp;&nbsp;{{profile_data[0]}}
+                        </div>
+                    </div>
+               
+                    <div class="user_data">
+                       <div class="user_data_style">
+                           FirstName &nbsp;&nbsp;&nbsp;<input class="data" type="text" name="firstname" value="{{profile_data[3]}}">
+                        </div>
+                    </div>
+                    
+                    <div class="user_data">
+                       <div class="user_data_style">
+                           LastName &nbsp;&nbsp;&nbsp;<input class="data" type="text" name="lastname" value="{{profile_data[4]}}">
+                        </div>
+                    </div>
+                    
+                    <div class="user_data">
+                       <div class="user_data_style">
+                           Phone &nbsp;&nbsp;&nbsp;<input class="data" type="text" name="phone" value="{{profile_data[5]}}">
+                        </div>
+                    </div>
+                    
+                    <div class="user_data">
+                       <div class="user_data_style">
+                          Country &nbsp;&nbsp;&nbsp;<input class="data" type="text" name="country" value="{{profile_data[6]}}">
+                        </div>
+                    </div>
+                    
+                    <div class="user_data">
+                       <div class="user_data_style">
+                           Summary &nbsp;&nbsp;&nbsp;<br><textarea style="background-color: black; color:azure; opacity:0.5;font-size: 20px;" name="summary" rows="5" cols="50">{{profile_data[9]}}</textarea>
+                        </div>
+                    </div>
+
+                  
+                  
+               <a href="profile_save_changes"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Save Changes" width="104" height="25" border="0" tabindex="5"></a>
+               </form>  
+               <br><br>
+               <a href="/change_password"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Change Password" width="104" height="25" border="0" tabindex="5"></a>
+                {% endblock %}
+                

@@ -1,0 +1,53 @@
+{% extends "/page.html" %}
+
+{% block title %}
+Balance
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+  .mainbody
+  {
+    margin-top: 20px;
+    background:#101822;
+        padding: 20px;
+  }
+  .img1
+  {
+   margin-top:10px;
+  }
+</style>
+{% if error %}
+{% endif %}
+{% endblock %}
+
+{% block body %}
+    
+   <div class="mainbody">
+     {% if data1 %}
+     {% for item in data1 %}
+       <div class="img1" style="width:900px;">
+        <img class="image" style="float: left;margin: 10px; max-height: 80px;" src="/static/images/items/{{ item[5] }}.png">
+           <div class="item_description" >
+              <h3>{{ item[3] }}</h3>
+               {{item[4]}}
+                 <span class="item_price">
+                  TransID:<br>{{ item[0] }}
+               </span>
+            <span class="item_price">
+                  ${{ item[2] }}
+               </span>
+               <span class="item_price">
+                  Time:&nbsp;{{ item[1] }}
+               </span> 
+               
+            </div>
+
+          </div>
+     {% endfor %}
+     {% else %}
+     <h1>No transactions</h1>
+     {% endif %}   
+    </div>
+    
+{% endblock %}

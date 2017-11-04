@@ -1,0 +1,35 @@
+{% extends "/page.html" %}
+
+{% block title %}
+ITEMS
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+	.game_name
+  {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .items_list
+  {
+    background-color:#101822;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .img1
+  {
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="game_items">
+       <div class="game_name"><span><img  style="float: left;margin: 0px 10px 0px 0px; height: 40px;" src="/static/images/games/{{ gameid }}.jpg"></span>{{ game_name }}</div>
+       <div class="items_list">
+          <h1>No Items Are Present</h1>
+       </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "/page.html" %}
+
+{% block title %}
+Balance
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+	.mainbody>label
+	{
+     font-size: 25px;
+	}
+
+</style>
+{% endblock %}
+
+{% block body %}
+     <div class="mainbody" style="height: 200px;padding-top:150px; ">
+        <form action="/add_balance" method="post">
+          <label style="font-size: 25px;color:white">How Much Money You want to add:</label> &nbsp;&nbsp;&nbsp;
+          $<input class="data" type="text" name="balance" value="0"><br><br><br>
+           <a href="/add_balance"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Add Money" width="104" height="25" border="0" tabindex="5"></a>
+        </form>
+     </div>
+{% endblock %}

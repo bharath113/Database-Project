@@ -1,0 +1,49 @@
+{% extends "/page.html" %}
+
+{% block title %}
+ITEMS
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+	.game_name
+  {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .items_list
+  {
+    background-color:#101822;
+    padding-left: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .img1
+  {
+    margin-bottom: 10px;
+    padding-bottom:10px;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="game_items">
+       <div class="game_name"><span><img  style="float: left;margin: 0px 10px 0px 0px; max-height: 80px;" src="/static/images/games/{{ gameitems[0][9] }}.jpg"></span>{{ game_name }}</div>
+       <div class="items_list">
+
+        {% for item in gameitems %}
+                     <a href="/item_data_page/{{item[0]}}"> <div class="img1" style="width:800px;">
+                              <img class="image" style="float: left;margin: 10px; max-height: 80px;" src="/static/images/items/{{ item[0] }}.png">
+                              <div class="item_description" >
+                                  <h3>{{ item[1] }}</h3>
+                                  
+                              <span class="item_price">
+                                ${{ item[5] }}
+                               </span>  
+                            </div>
+                           </div>
+                       </a>
+        {% endfor %}
+       </div>
+    </div>
+{% endblock %}

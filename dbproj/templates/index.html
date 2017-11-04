@@ -1,30 +1,91 @@
-{% extends "layouts/page.html" %}
+{% extends "page.html" %}
 
 {% block title %}
 Steam Community Login
 {% endblock %}
-
-{% block body %}
-<div class="mainLoginPanel">
- 	<div class="mainLoginLeftPanel">
-    	<h1>Sign In</h1><br>
-		<p>To an existing Steam account</p>
-		<form>
-			<div class="mainLoginLeftPanel_signin">
-				<label for="steamAccountName">Email</label><br>
-				<input class="textField" type="text" name="username" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
-				<label for="steamPassword">Password</label><br>
-				<input class="textField" type="password" name="password" id="steamPassword" autocomplete="off" maxlength="64" tabindex="2"><br>
-			</div>
-			<div style="clear: both;">
-				<div id="login_btn_signin"><br>
-					<input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Sign in" width="104" height="25" border="0" tabindex="5">
-				</div>
-				<div class="forgotHelper">
-					<a href="#">Forgot password</a>		
-				</div>
-			</div>
-		</form>
- 	</div>                     
-</div>
+{% block style %}
+<script type="text/javascript">
+  {% if error %}
+  alert("{{error}}")
+  {% endif %}
+</script>
 {% endblock %}
+{% block body %}
+
+
+                     <div class="container_body"> 
+                         <img style="margin-top: 15px; margin-left:15px; border: 3px black solid; float:left" src="static/images/steam_main_logo.png">  
+                        <div class="container_data">
+                            <h1>Welcome To STEAM COMMUNITY Market&nbsp;&nbsp;&nbsp;</h1>
+                            <p>The best place where you can exchange your in-game items </p>
+                        </div>
+                     </div>
+                     <div class="activity_bar">
+                       <ul>
+                         <li class="active"><a  data-toggle="tab" href="#popularitems">Popular Items</a></li>
+                         <li><a data-toggle="tab" href="#recentlysold" >Recently Sold</a></li>
+                        
+                       </ul>                    
+                     </div>
+                   
+                   <div class="game_list" style="padding-bottom: 23px;">
+                    
+                  {% for game_data in game_data %}	 
+                   	 <a href="/game_items/{{ game_data[0] }}">
+                   	 	<div class="game_info">
+                   	 	
+                   	 	<img class="img2" src="static/images/games/{{game_data[0]}}.jpg">
+                   	    <div class="game_details" >{{game_data[1]}}</div>
+                   	    </div>
+                   	 </a>
+                   	{% endfor %}
+       
+                  </div>
+
+                   <div class="tab-content" >
+                       
+                       
+                      <div id="popularitems" class="tab-pane active">
+
+                         {% for item in data %}
+                             
+                     <a href="item_data_page/{{item[0]}}"> <div class="img1">
+                              <img class="image" style="float: left;margin: 10px; max-height: 80px;" src="static/images/items/{{ item[0] }}.png">
+                              <div class="item_description" >
+                                  <h3>{{ item[1] }}</h3>
+                                   {{item[10]}}
+                              <span class="item_price">
+                                ${{ item[5] }}
+                               </span>  
+                            </div>
+                           </div>
+                       </a>
+
+                         {% endfor %}
+                       
+                      </div>
+                     
+                      <div id="recentlysold" class="tab-pane">
+                       
+                        {% for item in recent %}
+                             
+                     <a href="item_data_page/{{item[3]}}"> <div class="img1">
+                              <img class="image" style="float: left;margin: 10px; max-height: 80px;" src="static/images/items/{{ item[3] }}.png">
+                              <div class="item_description" >
+                                  <h3>{{ item[1] }}</h3>
+                                   {{item[0]}}
+                              <span class="item_price">
+                                ${{ item[2] }}
+                               </span>  
+                            </div>
+                           </div>
+                       </a>
+
+                         {% endfor %}
+                          
+                      </div>   
+                    </div>
+                   
+                    
+ {% endblock %}                
+           

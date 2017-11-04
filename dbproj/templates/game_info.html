@@ -1,0 +1,61 @@
+{% extends "page.html" %}
+
+{% block title %}
+Item Description
+{% endblock %}
+
+
+{% block body %}
+
+                    <p style="margin-top: 50px;">{{ item_game_name }} > {{item_info[1]}}</p>
+    <div style="background: rgba(0,0,0,0.4);padding:5px;margin-top: 50px;margin-bottom: 45px;">
+                  <div class="main_body_area">
+                   <div class="game_data" style="float:right;margin: 10px;width:520px; ">
+                     <h1 style="color:white ">{{item_info[1]}}</h1>
+                       <br><br>
+                      <div class="game_info_basic"> 
+                          <img style="width:38px;float: left;" src="/static/images/games/{{item_info[9]}}.jpg">
+                          <div style="padding-left: 50px;">{{item_game_name}}<br> {{cq}} </div>
+                       </div>
+                       
+                       <div class="Item_data_info" style="margin-top: 10px;">
+                        {{r}}<br>{{q}}
+                       <br>
+                       <br><br><br>
+                           {{item_info[8]}}
+                       </div>
+                       
+                       
+                   </div>
+                    <img class="item_img" src="/static/images/items/{{item_info[0]}}.png">
+                      
+                    </div>
+                    
+                    
+                    {% if item_no %}
+                        <div style="padding-bottom: 30px;"><h1 style="padding-left: 50px;color:green">This item is not currently in sale</h1></div>
+                    {% else %}
+                     {% if forsale %}
+                    {% for forsale in forsale %}
+                    <div class="owner_details" style="border: 2px   #666666 solid;padding:5px;font-size: 18px; 
+                           font-family:times new roman;margin-right: 200px;">
+                            <div class="Buy" style="float: right;margin-top: 6px;">
+                              {% if forsale[0] %}
+                    <a href="/trans_page/{{forsale[1]}},{{item_info[0]}}"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Buy" width="104" height="25" border="0" tabindex="5" style="margin-bottom: 30px;"></a>
+                              {% else %}
+                               Item Soldout
+                              {% endif %}
+                    </div> 
+                        Owner: {{forsale[1]}}
+                       <br>Item_cost:  {{item_info[5]}} 
+
+                      </div> 
+                   {% endfor %}
+                     {% else %}
+                          <div style="padding-bottom: 30px;"><h1 style="padding-left: 50px;color:green">This item is not currently on Sale</h1></div>
+                     {% endif %}
+                   {% endif %}
+                   {{data}}
+</div>            	
+                {% endblock %}                
+           
