@@ -3,16 +3,16 @@ Lab project
 
 This project is done in python and mysql. Used flask framework to connect the database and the html.
 
-###Languages Used
+### Languages Used
 Backend - Python, Mysql
 Frontend - Html, CSS
 
-###Softwares used
+### Softwares used
 Anaconda Navigator - Helps to create the environment required
 
 Xampp - To create local mysql database
 
-###Installing the software
+### Installing the software
 In anaconda navigator select environments create a new environment install pip, flask, flask-login,flask-wtf, wtforms, mysql-connector-python, mysql-python.
 
 Download Xampp and install.
