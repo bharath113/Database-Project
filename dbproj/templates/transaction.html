@@ -1,0 +1,54 @@
+{% extends "page.html" %}
+
+{% block title %}
+TRANSACTION
+{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+  .hello
+  {
+    color: white;
+    padding: 20px;
+  }
+  .item_img
+  {
+    margin-left: 300px;
+  }
+  .Owner_details
+  {
+   float: left;
+   width: 430px;
+
+  }
+  .Customer_details
+  {
+   float: right;
+  }
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="hello" style="font-size: 20px;">
+   <div style="margin-bottom:30px; ">
+   <img class="item_img" src="/static/images/items/{{item_info[0]}}.png"> 
+   </div>
+   <br><span style="padding-left:  320px;color:#C0C000;font-size: 20px;">{{item_info[1]}}</span> 
+   <br><span style="padding-left:  320px;color:#C0C000;font-size: 20px;">{{item_game_name}}</span>
+   <br><span style="padding-left:  450px;color:#C0C000;font-size: 20px;">${{item_info[5]}}</span>
+
+   <br><br><br><br>
+   <div class="Owner_details" style="float: left">
+     <span style="color:#80C000">SELLER</span><br>
+     {{usernames[1]}}
+   </div> 
+   <div class="Customer_details">
+    <span style="color:#80C000">BUYER</span><br>
+     {{usernames[0]}}
+   </div>
+   <div>
+     <a href="/transaction/{{usernames[1]}}:{{usernames[0]}}:{{item_info[0]}}"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Buy Now" width="104" height="25" border="0" tabindex="5" style="margin-bottom: 30px;"></a>
+   </div>
+</div>
+{% endblock %}                
+           

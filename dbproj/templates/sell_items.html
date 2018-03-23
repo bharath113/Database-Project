@@ -1,0 +1,48 @@
+{% extends "/page.html" %}
+
+{% block title %}
+Balance
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+	.mainbody
+  {
+    margin-top: 20px;
+    background:#101822;
+        padding: 20px;
+  }
+  .img1
+  {
+   margin-top:10px;
+  }
+</style>
+{% if error %}
+{% endif %}
+{% endblock %}
+
+{% block body %}
+    
+    <div class="mainbody">
+     {% for item in data %}
+       <div class="img1" style="width:900px;">
+        <img class="image" style="float: left;margin: 10px; max-height: 80px;" src="static/images/items/{{ item[0] }}.png">
+           <div class="item_description" >
+              <h3>{{ item[1] }}</h3>
+               {{item[3]}}
+                
+                {% if var %}
+               <span class="item_price"><a href="/sell_this/{{item[0]}}:{{item[4]}}"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Sell" width="104" height="25" border="0" tabindex="5" style="margin-bottom: 30px;"></a> </span>
+               {% else %}
+                  <span class="item_price"><a href="/remove_from_market/{{item[4]}}"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="Remove" width="104" height="25" border="0" tabindex="5" style="margin-bottom: 30px;"></a> </span>
+                {% endif %}
+            <span class="item_price">
+                  ${{ item[2] }}
+               </span> 
+            </div>
+
+          </div>
+     {% endfor %}   
+    </div>
+    
+{% endblock %}

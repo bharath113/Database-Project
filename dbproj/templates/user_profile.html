@@ -1,24 +1,69 @@
-{% extends "layouts/page.html" %}
+{% extends "/page.html" %}
 
 <!--
     Can make it so that the "User Page" is replaced by the username
 -->
 {% block title %}
-Steam Community - User Page
+ User Profile
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+    .item_image
+    {
+        width: 100px;
+        height: 100px;
+        border: 2px #000000 solid;
+        margin:5px;
+        
+    }
+    .data_of_items
+    {
+        border: 3px #305050 solid;
+        margin-top: 15px;
+    }
+</style>
+
+
 {% endblock %}
 
 {% block body %}
+<!DOCTYPE html>
+{% if error %}
+<script>
+var er="{{ error }}"
+alert(er)
+</script>
+{% endif %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_profile.css') }}">
 <div class="profile_header_texture">
     <div class="profile_photo">
         <span><img src="/static/images/profile.png"></span>
     </div>
     <div class="profile_data">
-        <p>User_Name</p>
-        <p>Some Info about user</p>
+        <p>{{ user_details[3] }} {{ user_details[4] }}</p>
+        <p style="font-size:18px; width: 167px;">{{ user_details[9] }}</p>
+        <h3 style="color:#D070D0">Balance: {{ user_details[2] }}</h3> 
     </div>
     <div class="profile_level">
         <p style="font-size: 25px;">Level: 10</p>
-		<input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Edit Profile" width="104" height="25" border="0" tabindex="5">
+        <a href="edit_profile"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Edit Profile" width="104" height="25" border="0" tabindex="5"></a><br><br><br>
+        <a href="add_balance"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Add Balance" width="104" height="25" border="0" tabindex="5"></a>
     </div>
 </div>
+
+<br>
+<h2 style="color:#F0FFFF">Items In Possession</h2>
+<div class="data_of_items">
+    <br>
+    <div>
+        {% for items in data %}
+        <img class="item_image" src="/static/images/items/{{ items[0] }}.png">
+        {% endfor %}
+    </div>
+</div><br><br>
+<a href="sell_items"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Sell Items" width="104" height="25" border="0" tabindex="5"></a> &nbsp;&nbsp;
+<a href="/remove"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Remove" width="104" height="25" border="0" tabindex="5"></a>&nbsp;&nbsp;
+<a href="/history/1"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Sold Items" width="104" height="25" border="0" tabindex="5"></a>&nbsp;&nbsp;
+<a href="/history/2"><input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Bought Items" width="104" height="25" border="0" tabindex="5"></a>
 {% endblock %}

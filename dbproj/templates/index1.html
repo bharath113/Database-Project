@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block title %}
+Steam Community Login
+{% endblock %}
+
+{% block body %}
+{% if error1 %}
+<script>
+ var er="{{ error1 }}"
+ alert(er)
+</script>
+{% endif %}
+
+<div class="mainLoginPanel">
+ 	<div class="mainLoginLeftPanel">
+    	<h1>Sign In</h1><br>
+		<p>To an existing Steam account</p>
+		<form action="login" method="post">
+			<div class="mainLoginLeftPanel_signin">
+				<label for="steamAccountName">Username</label><br>
+				<input class="textField" type="text" placeholder="username" name="username" id="steamAccountName" maxlength="64" tabindex="1" value="{{request.form.username}}"><br><br>
+				<label for="steamPassword">Password</label><br>
+				<input class="textField" type="password" placeholder="password" name="password" id="steamPassword" autocomplete="off" maxlength="64" tabindex="2" value="{{request.form.password}}"><br>
+			</div>
+			<div style="clear: both;">
+				<div id="login_btn_signin"><br>
+					<input class="btn_green_white_innerfade btn_medium" type="submit" id="SteamLogin" value="Sign in" width="104" height="25" border="0" tabindex="5">
+				</div>
+				<div class="forgotHelper">
+					<a href="#">Forgot password</a>		
+				</div>
+                {% if error %}
+                {{ error }}
+                {% endif %}
+			</div>
+		</form>
+        
+ 	</div>                     
+</div>
+{% endblock %}

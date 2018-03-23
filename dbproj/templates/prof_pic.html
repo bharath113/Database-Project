@@ -1,0 +1,27 @@
+{% extends "/page.html" %}
+
+{% block title %}
+Balance
+{% endblock %}
+
+{% block style %}
+<style type="text/css">
+	.mainbody>label
+	{
+     font-size: 25px;
+	}
+
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="user_data">
+                        <div class="user_data_style">
+                        Upload Profile Pic:
+                         <form id="upload-form" action="upload_profpic" method="post" enctype="multipart/form-data">
+                          <input type="file" name="prof_pic" accpet="images/*" multiple>
+                          <a href="/upload_profpic"><input class="save_button btn_green_white_innerfade btn_medium" type="submit" id="Change_password" value="upload" width="104" height="25" border="0" tabindex="5"></a>
+                         </form>
+                        </div>
+                      </div>
+{% endblock %}

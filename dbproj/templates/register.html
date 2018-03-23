@@ -1,15 +1,23 @@
-{% extends "layouts/page.html" %}
+{% extends "page.html" %}
 
 {% block title %}
 Steam Community Registration
 {% endblock %}
 
 {% block body %}
+
+{% if error %}
+<script>
+    if({{ error }} == 1)
+        alert("Username already taken")
+</script>
+{% endif %}
+
 <div class="mainRegisterPanel">
 	<div class="mainLoginLeftPanel">
 		<h1>Register</h1><br>
 		<p>Create a new Steam account</p>
-		<form>
+		<form method="post" action="/register">
 			<div class="mainRegisterLeftPanel_signup">
 				<label for="steamAccountName">Email</label><br>
 				<!--
@@ -26,13 +34,13 @@ Steam Community Registration
 				<input class="textField" type="text" name="country" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
 				<!-- fixed type attrib -->
 				<label for="steamAccountName">Phone Number</label><br>
-				<input class="textField no-spin" type="tel" size="10" name="phonenumber" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
-				<label for="steamAccountName">Date of Birth (DD-MM-YYYY)</label>
-				<input class="textField" type="date" name="dob" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<input class="textField no-spin" type="tel" size="10" name="phone" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>
+				<!--<label for="steamAccountName">Date of Birth (DD-MM-YYYY)</label>
+				<input class="textField" type="date" name="dob" id="steamAccountName" maxlength="64" tabindex="1" value=""><br><br>-->
 				<label for="steamAccountName">Password</label><br>
 				<input class="textField" type="password" name="password" id="steamPassword" autocomplete="off" maxlength="64" tabindex="1" value=""><br><br>
 				<label for="steamPassword">Confirm Password</label><br>
-				<input class="textField" type="password" name="password1" id="steamPassword" autocomplete="off" maxlength="64" tabindex="2"><br>
+				<input class="textField" type="password" name="confirm" id="steamPassword" autocomplete="off" maxlength="64" tabindex="2"><br>
 			</div>
 			<div style="clear: both;">
 				<div id="login_btn_signin"><br>

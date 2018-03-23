@@ -5,15 +5,26 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="theme-color" content="#171a21">
         <title>{% block title %}{% endblock %}</title>
-        <link rel="shortcut icon" href="/static/images/Title_icon.png" type="image/x-icon">
-		<link href="/static/css/motiva_sans.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/buttons.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/shared_global.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/globalv2.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/login.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/home.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/shared_responsive.css" rel="stylesheet" type="text/css">
-		<link href="/static/css/header.css" rel="stylesheet" type="text/css">
+        {% block style %}{% endblock %}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/Title_icon.png') }}">
+	    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/motiva_sans.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/buttons.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/shared_global.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/globalv2.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/shared_responsive.css') }}">
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="static/js/index.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+                <link rel="stylesheet" type="text/css" href="/static/css/game_info.css">
+        
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
@@ -24,20 +35,28 @@
 				<div class="content">
 	      			<div class="logo">
 	        			<span id="logo_holder">
-		    				<a href="#"><img src="/static/images/globalheader_logo.png" width="176" height="44"></a>
+		    				<a href="/"><img src="/static/images/globalheader_logo.png" width="176" height="44"></a>
                 		</span>
 					</div>
 					<div class="supernav_container">
-            			<a class="menuitem supernav" href="#" >Home</a>
-                        <a class="menuitem supernav" href="#" >Market</a>
+            			<a class="menuitem supernav" href="/" >Home</a>
+                        <!--<a class="menuitem supernav" href="#" >Market</a>-->
                         <!-- make it so that it shows the username if user is logged in -->
-						<a class="menuitem" href="#">User</a>
+						<!--<a class="menuitem" href="/user_profile">User</a>-->
         			</div>
 					<div id="global_actions">
 	 					 <div id="global_action_menu">
                             <!-- make it such that when someone logs in, it shows the logout link -->
-							<a class="global_action_link" href="/index.html">Login</a>
-							|<a class="global_action_link" href="#">Register</a>
+                             
+                             {% if session.logged_in %}
+                            <a href="/user_profile">{{session.username}}</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a  href="/logout">Logout</a>
+							
+                             {% else %}
+							<a  href="/login">Login</a>
+							&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="/register">Register</a>
+                             {% endif %}
             			</div>
          			</div>
        			</div>
@@ -46,20 +65,19 @@
             	<div id="mainBody">
                     
                     {% block body %}{% endblock %}
-
-             		<div id="footer">
+              	</div>
+          	</div>
+            <div id="footer" >
 						<div class="footer_content">
 							<span id="footerText">© Valve Corporation. All rights reserved. 
 								<span class="valve_links">
 									<a href="#" target="_blank">Privacy Policy</a>
-						 			| <a href="#" target="_blank">Legal</a>
-                                    | <a href="#" target="_blank">Steam Subscriber Agreement</a>
+						 			&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#" target="_blank">Legal</a>
+                                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#" target="_blank">Steam Subscriber Agreement</a>
 								</span>
 							</span>
                 		</div>		
 	     			</div>
-              	</div>
-          	</div>
         </div>
     </body>
 </html>

@@ -1,0 +1,45 @@
+{% extends "page.html" %}
+
+{% block title %}
+Steam Community Registration
+{% endblock %}
+
+{% block body %}
+
+<div class="mainRegisterPanel">
+	<div class="mainLoginLeftPanel">
+		<h1>Register</h1><br>
+		<p>Create a new Steam account</p>
+        {% from "_formhelpers.html" import render_field %}
+		<form method="post" action="/register1">
+			<div class="mainRegisterLeftPanel_signup">
+                <dl>
+  
+				{{render_field(form.username)}}<br>
+                {{render_field(form.email)}}<br>
+                {{render_field(form.firstname)}}<br>
+                {{render_field(form.lastname)}}<br>
+                {{render_field(form.country)}}<br>
+                {{render_field(form.phone)}}<br>
+                {{render_field(form.password)}}<br>
+                {{render_field(form.confirm)}}<br>
+                
+                </dl>
+                
+			</div>
+			<div style="clear: both;">
+				<div id="login_btn_signin"><br>
+					<input type="submit"  value="register" width="104" height="25" border="0" tabindex="5">
+				</div>
+				<div class="forgotHelper">
+					<a href="#">Forgot your password?</a>		
+				</div>
+			</div>
+		</form>
+        {% if error %}
+           <p class="error"> <strong>Error:</strong>{{error}}</p>
+        {% endif %}
+        
+	</div>                     
+</div>
+{% endblock %}

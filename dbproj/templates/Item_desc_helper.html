@@ -1,0 +1,12 @@
+{% macro render_field(field) %}
+<div class="img1">
+<img class="image" style="float: left;margin: 10px; max-height: 80px; "src="static/images/{{field[3]}}.png">
+    <div class="item_description" >
+         <h3 style="color:orange">{{ field[0] }}</h3>
+                                {{ field[1] }}
+                              <span class="item_price">
+                                ${{ field[2] }}
+                               </span>  
+                            </div>
+                        </div>
+{% endmacro %}
